@@ -33,7 +33,7 @@ enabled     = true
 # See docs/preset-registry.md for how to self-host.
 # [registry]
 # enabled    = false
-# url        = "https://presets.ccg-labs.dev/registry.json"
+# url        = "https://example.com/ccg-router/registry.json"
 # public_key = "PASTE_BASE64_ED25519_PUBKEY_HERE"
 `
 

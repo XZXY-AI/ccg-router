@@ -44,8 +44,8 @@ changelog:
   use: github
 brews:
   - repository:
-      owner: ccg-labs
+      owner: XZXY-AI
       name: homebrew-tap
-    homepage: https://github.com/ccg-labs/ccg-router
+    homepage: https://github.com/XZXY-AI/ccg-router
     description: Unified local router for Claude Code and Codex CLI
     license: Apache-2.0

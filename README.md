@@ -81,7 +81,7 @@ See `docs/faq.md`.
 ## Community
 
 See the hub:   https://github.com/XZXY-AI/awesome-ai-coding-cli
-Join Discord:  https://discord.gg/ccg-labs
+Discussions:   https://github.com/XZXY-AI/ccg-router/discussions
 
 ## Contributing
 

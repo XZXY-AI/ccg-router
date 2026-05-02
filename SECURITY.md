@@ -17,7 +17,7 @@ Out of scope:
 
 ## Reporting
 
-Contact: `security@ccg-labs.dev`
+Use GitHub Security Advisories for `XZXY-AI/ccg-router`.
 
 Expected timeline:
 

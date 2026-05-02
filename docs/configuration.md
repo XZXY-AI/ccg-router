@@ -44,7 +44,7 @@ enabled = true
 
 [registry]
 enabled = false
-url = "https://presets.ccg-labs.dev/registry.json"
+url = "https://example.com/ccg-router/registry.json"
 public_key = "PASTE_BASE64_ED25519_PUBLIC_KEY"
 ```
 
