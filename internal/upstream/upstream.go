@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ccg-labs/ccg-router/internal/config"
+	"github.com/XZXY-AI/ccg-router/internal/config"
 )
 
 type Upstream struct {

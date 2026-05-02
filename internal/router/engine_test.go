@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/ccg-labs/ccg-router/internal/normal"
-	"github.com/ccg-labs/ccg-router/internal/upstream"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/upstream"
 	"github.com/stretchr/testify/require"
 )
 

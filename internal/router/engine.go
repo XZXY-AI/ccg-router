@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/ccg-labs/ccg-router/internal/normal"
-	"github.com/ccg-labs/ccg-router/internal/upstream"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/upstream"
 )
 
 type Decision struct {

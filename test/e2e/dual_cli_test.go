@@ -11,11 +11,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ccg-labs/ccg-router/internal/config"
-	"github.com/ccg-labs/ccg-router/internal/ledger"
-	"github.com/ccg-labs/ccg-router/internal/router"
-	"github.com/ccg-labs/ccg-router/internal/server"
-	"github.com/ccg-labs/ccg-router/internal/upstream"
+	"github.com/XZXY-AI/ccg-router/internal/config"
+	"github.com/XZXY-AI/ccg-router/internal/ledger"
+	"github.com/XZXY-AI/ccg-router/internal/router"
+	"github.com/XZXY-AI/ccg-router/internal/server"
+	"github.com/XZXY-AI/ccg-router/internal/upstream"
 	"github.com/stretchr/testify/require"
 )
 

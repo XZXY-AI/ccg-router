@@ -5,7 +5,7 @@
 > Claude Code 和 Codex CLI 的统一本地路由器。
 > 一套配置、智能 fallback、真实本地用量洞察。
 
-![CI](https://github.com/ccg-labs/ccg-router/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 ![demo](docs/demo.gif)
@@ -66,7 +66,7 @@ Claude Code 把 Anthropic-compatible 请求发到 `127.0.0.1:17180`。Codex CLI 
 
 ## Community
 
-See the hub:   https://github.com/ccg-labs/awesome-ai-coding-cli
+See the hub:   https://github.com/XZXY-AI/awesome-ai-coding-cli
 Join Discord:  https://discord.gg/ccg-labs
 
 ## Contributing

@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ccg-labs/ccg-router/internal/config"
-	"github.com/ccg-labs/ccg-router/internal/ledger"
-	"github.com/ccg-labs/ccg-router/internal/registry"
+	"github.com/XZXY-AI/ccg-router/internal/config"
+	"github.com/XZXY-AI/ccg-router/internal/ledger"
+	"github.com/XZXY-AI/ccg-router/internal/registry"
 	"github.com/spf13/cobra"
 )
 

@@ -5,7 +5,7 @@
 > A unified local router for Claude Code and Codex CLI.
 > One config, smart fallback, real usage insights.
 
-![CI](https://github.com/ccg-labs/ccg-router/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 ![demo](docs/demo.gif)
@@ -23,15 +23,15 @@
 Install with Homebrew, Go, or the shell installer:
 
 ```bash
-brew install ccg-labs/tap/ccg-router
-go install github.com/ccg-labs/ccg-router/cmd/ccg-router@latest
-curl -fsSL https://raw.githubusercontent.com/ccg-labs/ccg-router/main/scripts/install.sh | bash
+brew install XZXY-AI/tap/ccg-router
+go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
+curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
 ```
 
 Read pipe-to-bash scripts before running them:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ccg-labs/ccg-router/main/scripts/install.sh
+curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh
 ```
 
 ```bash
@@ -80,7 +80,7 @@ See `docs/faq.md`.
 
 ## Community
 
-See the hub:   https://github.com/ccg-labs/awesome-ai-coding-cli
+See the hub:   https://github.com/XZXY-AI/awesome-ai-coding-cli
 Join Discord:  https://discord.gg/ccg-labs
 
 ## Contributing

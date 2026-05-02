@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/ccg-labs/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
 )
 
 func FormatAnthropicResponse(r normal.NormalResponse) ([]byte, error) {

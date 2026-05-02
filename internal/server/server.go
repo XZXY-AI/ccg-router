@@ -12,13 +12,13 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ccg-labs/ccg-router/internal/adapter"
-	"github.com/ccg-labs/ccg-router/internal/dispatch"
-	"github.com/ccg-labs/ccg-router/internal/ledger"
-	"github.com/ccg-labs/ccg-router/internal/normal"
-	"github.com/ccg-labs/ccg-router/internal/router"
-	"github.com/ccg-labs/ccg-router/internal/ui"
-	"github.com/ccg-labs/ccg-router/internal/upstream"
+	"github.com/XZXY-AI/ccg-router/internal/adapter"
+	"github.com/XZXY-AI/ccg-router/internal/dispatch"
+	"github.com/XZXY-AI/ccg-router/internal/ledger"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/router"
+	"github.com/XZXY-AI/ccg-router/internal/ui"
+	"github.com/XZXY-AI/ccg-router/internal/upstream"
 )
 
 type Deps struct {

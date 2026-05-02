@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/ccg-labs/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
 )
 
 type anthropicMessage struct {

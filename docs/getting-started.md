@@ -5,13 +5,13 @@
 ### Homebrew (macOS, Linux)
 
 ```bash
-brew install ccg-labs/tap/ccg-router
+brew install XZXY-AI/tap/ccg-router
 ```
 
 ### Go
 
 ```bash
-go install github.com/ccg-labs/ccg-router/cmd/ccg-router@latest
+go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
 ```
 
 ## Three Steps

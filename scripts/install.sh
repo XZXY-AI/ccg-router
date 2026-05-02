@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="ccg-labs/ccg-router"
+REPO="XZXY-AI/ccg-router"
 VERSION="${CCG_VERSION:-latest}"
 DEST="${CCG_DEST:-$HOME/.local/bin}"
 

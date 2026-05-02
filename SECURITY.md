@@ -36,7 +36,7 @@ Release archives and `checksums.txt` are signed with cosign keyless signing from
 
 ```bash
 cosign verify-blob \
-  --certificate-identity-regexp 'https://github.com/ccg-labs/ccg-router/.*' \
+  --certificate-identity-regexp 'https://github.com/XZXY-AI/ccg-router/.*' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
   --signature <archive>.sig <archive>
 ```

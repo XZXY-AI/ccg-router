@@ -1,4 +1,4 @@
-module github.com/ccg-labs/ccg-router
+module github.com/XZXY-AI/ccg-router
 
 go 1.24.0
 

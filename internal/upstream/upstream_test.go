@@ -3,7 +3,7 @@ package upstream
 import (
 	"testing"
 
-	"github.com/ccg-labs/ccg-router/internal/config"
+	"github.com/XZXY-AI/ccg-router/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

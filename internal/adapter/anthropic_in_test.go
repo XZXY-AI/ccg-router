@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/ccg-labs/ccg-router/internal/normal"
+	"github.com/XZXY-AI/ccg-router/internal/normal"
 	"github.com/stretchr/testify/require"
 )
 
