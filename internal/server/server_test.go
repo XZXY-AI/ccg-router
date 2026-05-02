@@ -57,7 +57,45 @@ func TestServer_StreamingReturns501(t *testing.T) {
 	require.Equal(t, http.StatusNotImplemented, resp.StatusCode)
 }
 
+func TestServer_AuthTokenRejectsWrongAuthorization(t *testing.T) {
+	up := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(`{}`))
+	}))
+	defer up.Close()
+
+	_, srv := testServerWithToken(t, up.URL, "secret")
+	body := []byte(`{"model":"claude-sonnet-4-7","max_tokens":64,"messages":[{"role":"user","content":"hi"}]}`)
+	req, err := http.NewRequest(http.MethodPost, srv.URL+"/v1/messages", bytes.NewReader(body))
+	require.NoError(t, err)
+	req.Header.Set("Authorization", "Bearer wrong")
+	resp, err := http.DefaultClient.Do(req)
+	require.NoError(t, err)
+	defer resp.Body.Close()
+	require.Equal(t, http.StatusUnauthorized, resp.StatusCode)
+}
+
+func TestServer_AuthTokenAllowsCorrectAuthorization(t *testing.T) {
+	up := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(`{}`))
+	}))
+	defer up.Close()
+
+	_, srv := testServerWithToken(t, up.URL, "secret")
+	body := []byte(`{"model":"claude-sonnet-4-7","max_tokens":64,"messages":[{"role":"user","content":"hi"}]}`)
+	req, err := http.NewRequest(http.MethodPost, srv.URL+"/v1/messages", bytes.NewReader(body))
+	require.NoError(t, err)
+	req.Header.Set("Authorization", "Bearer secret")
+	resp, err := http.DefaultClient.Do(req)
+	require.NoError(t, err)
+	defer resp.Body.Close()
+	require.Equal(t, http.StatusOK, resp.StatusCode)
+}
+
 func testServer(t *testing.T, upstreamURL string) (*ledger.Ledger, *httptest.Server) {
+	return testServerWithToken(t, upstreamURL, "")
+}
+
+func testServerWithToken(t *testing.T, upstreamURL string, token string) (*ledger.Ledger, *httptest.Server) {
 	t.Helper()
 	pool, err := upstream.NewPool(config.Config{
 		Upstreams: []config.Upstream{{
@@ -74,7 +112,7 @@ func testServer(t *testing.T, upstreamURL string) (*ledger.Ledger, *httptest.Ser
 	require.NoError(t, err)
 	t.Cleanup(func() { _ = l.Close() })
 
-	s := New(Deps{Pool: pool, Engine: eng, Ledger: l})
+	s := New(Deps{Pool: pool, Engine: eng, Ledger: l, AuthToken: token})
 	ts := httptest.NewServer(s.Handler())
 	t.Cleanup(ts.Close)
 	return l, ts

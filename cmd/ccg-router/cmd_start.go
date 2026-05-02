@@ -52,7 +52,7 @@ func newStartCmd() *cobra.Command {
 
 			srv := &http.Server{
 				Addr:              cfg.Listen,
-				Handler:           server.New(server.Deps{Pool: pool, Engine: eng, Ledger: l}).Handler(),
+				Handler:           server.New(server.Deps{Pool: pool, Engine: eng, Ledger: l, AuthToken: cfg.AuthToken}).Handler(),
 				ReadHeaderTimeout: 10 * time.Second,
 			}
 			ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)

@@ -8,6 +8,7 @@
 |---|---|
 | `listen` | Local address the daemon binds to. Defaults to `127.0.0.1:17180`. |
 | `strategy` | Routing strategy: `prefer-cheaper`, `prefer-capable`, or `round-robin`. |
+| `auth_token` | Optional bearer token for local HTTP requests. Required when `listen` is not loopback. |
 | `[[upstream]]` | One upstream endpoint definition. Order matters for routing. |
 | `upstream.id` | Stable identifier used in logs, decisions, and ledger rows. |
 | `upstream.protocol` | Wire protocol expected by the upstream: `anthropic` or `openai`. |
@@ -25,6 +26,7 @@
 ```toml
 listen = "127.0.0.1:17180"
 strategy = "prefer-cheaper"
+auth_token = ""
 
 [[upstream]]
 id = "anthropic-direct"

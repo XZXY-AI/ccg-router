@@ -26,6 +26,7 @@ type Deps struct {
 	Engine     *router.Engine
 	Ledger     *ledger.Ledger
 	Dispatcher *dispatch.Dispatcher // optional; default created if nil
+	AuthToken  string
 }
 
 type Server struct {
@@ -49,7 +50,24 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, _ *http.Request) {
 		_, _ = w.Write([]byte(`ok`))
 	})
-	return mux
+	return s.authMiddleware(mux)
+}
+
+func (s *Server) authMiddleware(next http.Handler) http.Handler {
+	if s.deps.AuthToken == "" {
+		return next
+	}
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/healthz" {
+			next.ServeHTTP(w, r)
+			return
+		}
+		if r.Header.Get("Authorization") != "Bearer "+s.deps.AuthToken {
+			http.Error(w, "unauthorized", http.StatusUnauthorized)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
 }
 
 func (s *Server) handleAnthropic(w http.ResponseWriter, r *http.Request) {

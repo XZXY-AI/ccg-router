@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/BurntSushi/toml"
 )
@@ -27,6 +28,7 @@ type Registry struct {
 type Config struct {
 	Listen    string     `toml:"listen"`
 	Strategy  string     `toml:"strategy"`
+	AuthToken string     `toml:"auth_token"`
 	Upstreams []Upstream `toml:"upstream"`
 	Registry  Registry   `toml:"registry"`
 }
@@ -59,6 +61,9 @@ func Load(path string) (Config, error) {
 	if !validStrategies[c.Strategy] {
 		return Config{}, fmt.Errorf("unknown strategy %q", c.Strategy)
 	}
+	if !isLoopbackListen(c.Listen) && c.AuthToken == "" {
+		return Config{}, fmt.Errorf("auth_token is required when listen is not loopback")
+	}
 	for i, u := range c.Upstreams {
 		if u.ID == "" || u.Protocol == "" || u.BaseURL == "" {
 			return Config{}, fmt.Errorf("upstream[%d] missing required fields", i)
@@ -68,4 +73,11 @@ func Load(path string) (Config, error) {
 		}
 	}
 	return c, nil
+}
+
+func isLoopbackListen(listen string) bool {
+	return strings.HasPrefix(listen, "127.") ||
+		strings.HasPrefix(listen, "localhost:") ||
+		strings.HasPrefix(listen, "[::1]:") ||
+		strings.HasPrefix(listen, "::1:")
 }

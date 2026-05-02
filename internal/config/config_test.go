@@ -53,3 +53,23 @@ func TestLoad_RejectsUnknownStrategy(t *testing.T) {
 	_, err := Load(path)
 	require.Error(t, err)
 }
+
+func TestLoad_RequiresAuthTokenForNonLoopbackListen(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "ccg.toml")
+	require.NoError(t, os.WriteFile(path, []byte(`listen = "0.0.0.0:17180"`), 0o600))
+	_, err := Load(path)
+	require.Error(t, err)
+}
+
+func TestLoad_AllowsAuthTokenForNonLoopbackListen(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "ccg.toml")
+	require.NoError(t, os.WriteFile(path, []byte(`
+listen = "0.0.0.0:17180"
+auth_token = "secret"
+`), 0o600))
+	cfg, err := Load(path)
+	require.NoError(t, err)
+	require.Equal(t, "secret", cfg.AuthToken)
+}
