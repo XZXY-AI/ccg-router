@@ -29,3 +29,14 @@ Expected timeline:
 PGP fingerprint: `PUBLISH-BEFORE-V0.1.0`
 
 The production key is generated and stored in the project vault before the first public release.
+
+## Verifying Release Archives
+
+Release archives and `checksums.txt` are signed with cosign keyless signing from GitHub Actions.
+
+```bash
+cosign verify-blob \
+  --certificate-identity-regexp 'https://github.com/ccg-labs/ccg-router/.*' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  --signature <archive>.sig <archive>
+```

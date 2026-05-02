@@ -1,0 +1,51 @@
+version: 2
+project_name: ccg-router
+builds:
+  - id: ccg-router
+    main: ./cmd/ccg-router
+    binary: ccg-router
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}}
+archives:
+  - id: default
+    formats:
+      - tar.gz
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+checksum:
+  name_template: checksums.txt
+signs:
+  - id: cosign-archives
+    cmd: cosign
+    artifacts: archive
+    args:
+      - sign-blob
+      - '--yes'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+  - id: cosign-checksums
+    cmd: cosign
+    artifacts: checksum
+    args:
+      - sign-blob
+      - '--yes'
+      - '--output-signature=${signature}'
+      - '${artifact}'
+snapshot:
+  version_template: '{{ incpatch .Version }}-next'
+changelog:
+  use: github
+brews:
+  - repository:
+      owner: ccg-labs
+      name: homebrew-tap
+    homepage: https://github.com/ccg-labs/ccg-router
+    description: Unified local router for Claude Code and Codex CLI
+    license: Apache-2.0
