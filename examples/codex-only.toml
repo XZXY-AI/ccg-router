@@ -1,0 +1,9 @@
+listen = "127.0.0.1:17180"
+strategy = "prefer-cheaper"
+
+[[upstream]]
+id = "openai-direct"
+protocol = "openai"
+base_url = "https://api.openai.com"
+auth_header = "Authorization: Bearer ${OPENAI_API_KEY}"
+enabled = true
