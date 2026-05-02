@@ -8,6 +8,7 @@ package dispatch
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -46,6 +47,7 @@ func (d *Dispatcher) Do(ctx context.Context, u upstream.Upstream,
 	if raw == nil {
 		return 0, nil, nil, fmt.Errorf("missing raw body in NormalRequest")
 	}
+	raw = rewriteModel(raw, u.ModelMap)
 	target := strings.TrimRight(u.BaseURL, "/") + path
 
 	var lastErr error
@@ -95,4 +97,30 @@ func applyAuth(req *http.Request, header string) {
 		val := strings.TrimSpace(header[i+1:])
 		req.Header.Set(key, val)
 	}
+}
+
+func rewriteModel(raw []byte, modelMap map[string]string) []byte {
+	if len(modelMap) == 0 {
+		return raw
+	}
+	var obj map[string]json.RawMessage
+	if err := json.Unmarshal(raw, &obj); err != nil {
+		return raw
+	}
+	modelRaw, ok := obj["model"]
+	if !ok {
+		return raw
+	}
+	var model string
+	if err := json.Unmarshal(modelRaw, &model); err != nil {
+		return raw
+	}
+	if mapped, ok := modelMap[model]; ok && mapped != "" {
+		b, _ := json.Marshal(mapped)
+		obj["model"] = b
+		if out, err := json.Marshal(obj); err == nil {
+			return out
+		}
+	}
+	return raw
 }

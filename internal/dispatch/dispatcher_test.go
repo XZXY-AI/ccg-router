@@ -88,3 +88,28 @@ func TestDispatcher_ForwardsAnthropicVersion(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, "2023-06-01", seen)
 }
+
+func TestDispatcher_AppliesModelMap(t *testing.T) {
+	var body string
+	up := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		b, _ := io.ReadAll(r.Body)
+		body = string(b)
+		_, _ = w.Write([]byte(`{}`))
+	}))
+	defer up.Close()
+	d := New()
+	u := upstream.Upstream{
+		ID: "t", Protocol: "openai", BaseURL: up.URL,
+		ResolvedAuthHeader: "Authorization: Bearer x", Enabled: true,
+		ModelMap: map[string]string{"gpt-5": "gpt-5-internal"},
+	}
+	nr := normal.NormalRequest{
+		SourceCLI: normal.SourceCodex, Model: "gpt-5", MaxTokens: 8,
+		Messages: []normal.Message{{Role: "user", Content: "x"}},
+		Extra:    map[string][]byte{"raw": []byte(`{"model":"gpt-5","messages":[{"role":"user","content":"x"}]}`)},
+	}
+	_, _, _, err := d.Do(context.Background(), u, nr, "/v1/chat/completions", http.Header{})
+	require.NoError(t, err)
+	require.Contains(t, body, `"model":"gpt-5-internal"`)
+	require.NotContains(t, body, `"model":"gpt-5"`)
+}

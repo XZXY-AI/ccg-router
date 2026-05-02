@@ -20,6 +20,20 @@
 
 ## Quickstart
 
+Install with Homebrew, Go, or the shell installer:
+
+```bash
+brew install ccg-labs/tap/ccg-router
+go install github.com/ccg-labs/ccg-router/cmd/ccg-router@latest
+curl -fsSL https://raw.githubusercontent.com/ccg-labs/ccg-router/main/scripts/install.sh | bash
+```
+
+Read pipe-to-bash scripts before running them:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ccg-labs/ccg-router/main/scripts/install.sh
+```
+
 ```bash
 ccg-router init
 export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
