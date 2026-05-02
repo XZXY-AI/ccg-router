@@ -3,12 +3,17 @@
 [English](README.md) · **中文**
 
 > Claude Code 和 Codex CLI 的统一本地路由器。
-> 一套配置、智能 fallback、真实本地用量洞察。
+> 共享 upstream、切换路由策略、记录本地用量，不再手动折腾 shell 环境变量。
 
 ![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
 ![demo](docs/demo.gif)
+
+`ccg-router` 运行在 `127.0.0.1`，接收 Anthropic-compatible 和 OpenAI-compatible 请求，把它们路由到你配置的 upstream，并把用量元数据写入本地 SQLite ledger。你的 provider key 保留在本地配置或环境变量里。
+
+如果它能帮你少切几次 CLI 环境变量，给 repo 一个 star 可以帮助更多 AI coding 用户发现它。
 
 ## Why ccg-router?
 
@@ -18,7 +23,17 @@
 | 手动切换 | 手动改 shell 环境变量 | 慢、不一致、没有 ledger |
 | `ccg-router` | Claude Code 和 Codex CLI 的本地路由层 | 一套配置、共享路由、本地用量 ledger |
 
+## Status
+
+`v0.1` 是 public preview，支持非 streaming 请求。Streaming passthrough 计划放到 `v0.2`。
+
 ## Quickstart
+
+先用 Go 从源码安装：
+
+```bash
+go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
+```
 
 ```bash
 ccg-router init
@@ -28,6 +43,8 @@ ccg-router start
 ```
 
 打开 `http://127.0.0.1:17180/ui/`。
+
+Release 二进制、shell installer 和 Homebrew formula 已为第一个正式 tag 准备好。
 
 ## How it works
 
@@ -66,8 +83,9 @@ Claude Code 把 Anthropic-compatible 请求发到 `127.0.0.1:17180`。Codex CLI 
 
 ## Community
 
-See the hub:   https://github.com/XZXY-AI/awesome-ai-coding-cli
-Discussions:   https://github.com/XZXY-AI/ccg-router/discussions
+Star the repo: https://github.com/XZXY-AI/ccg-router
+Discussions:  https://github.com/XZXY-AI/ccg-router/discussions
+Hub:          https://github.com/XZXY-AI/awesome-ai-coding-cli
 
 ## Contributing
 

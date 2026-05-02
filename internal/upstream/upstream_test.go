@@ -17,14 +17,14 @@ func TestPool_FromConfig(t *testing.T) {
 		},
 	}
 	p, err := NewPool(cfg, map[string]string{
-		"ANTHROPIC_API_KEY": "sk-ant-xxx",
-		"OPENAI_API_KEY":    "sk-openai-yyy",
+		"ANTHROPIC_API_KEY": "fake-anthropic-key",
+		"OPENAI_API_KEY":    "fake-openai-key",
 	})
 	require.NoError(t, err)
 
 	a, ok := p.Get("a")
 	require.True(t, ok)
-	require.Equal(t, "x-api-key: sk-ant-xxx", a.ResolvedAuthHeader)
+	require.Equal(t, "x-api-key: fake-anthropic-key", a.ResolvedAuthHeader)
 
 	// disabled upstream still resolvable but flagged
 	o, _ := p.Get("o")

@@ -2,13 +2,18 @@
 
 [中文](README.zh-CN.md) · **English**
 
-> A unified local router for Claude Code and Codex CLI.
-> One config, smart fallback, real usage insights.
+> One local router for Claude Code and Codex CLI.
+> Share upstreams, switch strategies, and keep a local usage ledger without juggling shell env vars.
 
 ![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
 ![demo](docs/demo.gif)
+
+`ccg-router` runs on `127.0.0.1`, accepts Anthropic-compatible and OpenAI-compatible requests, routes them to the upstreams you configure, and stores usage metadata in a local SQLite ledger. Your provider keys stay in your local config or environment.
+
+If this saves you from switching CLI env vars by hand, starring the repo helps more AI coding users find it.
 
 ## Why ccg-router?
 
@@ -18,20 +23,16 @@
 | Manual switching | Change shell env vars by hand | Slow, inconsistent, no ledger |
 | `ccg-router` | Local routing layer for Claude Code and Codex CLI | One config, shared routing, local usage ledger |
 
+## Status
+
+`v0.1` is a public preview for non-streaming requests. Streaming passthrough is planned for `v0.2`.
+
 ## Quickstart
 
-Install with Homebrew, Go, or the shell installer:
+Install from source with Go:
 
 ```bash
-brew install XZXY-AI/tap/ccg-router
 go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
-curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
-```
-
-Read pipe-to-bash scripts before running them:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh
 ```
 
 ```bash
@@ -42,6 +43,8 @@ ccg-router start
 ```
 
 Open `http://127.0.0.1:17180/ui/`.
+
+Release binaries, the shell installer, and Homebrew formula are prepared for the first tagged release.
 
 ## How it works
 
@@ -80,8 +83,9 @@ See `docs/faq.md`.
 
 ## Community
 
-See the hub:   https://github.com/XZXY-AI/awesome-ai-coding-cli
-Discussions:   https://github.com/XZXY-AI/ccg-router/discussions
+Star the repo: https://github.com/XZXY-AI/ccg-router
+Discussions:  https://github.com/XZXY-AI/ccg-router/discussions
+Hub:          https://github.com/XZXY-AI/awesome-ai-coding-cli
 
 ## Contributing
 
