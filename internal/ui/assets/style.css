@@ -1,0 +1,16 @@
+body {
+  color: #222;
+  font: 14px/1.4 system-ui, sans-serif;
+  margin: 2rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+pre {
+  background: #f3f3f3;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 1rem;
+}

@@ -17,6 +17,7 @@ import (
 	"github.com/ccg-labs/ccg-router/internal/ledger"
 	"github.com/ccg-labs/ccg-router/internal/normal"
 	"github.com/ccg-labs/ccg-router/internal/router"
+	"github.com/ccg-labs/ccg-router/internal/ui"
 	"github.com/ccg-labs/ccg-router/internal/upstream"
 )
 
@@ -44,6 +45,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("POST /v1/chat/completions", s.handleOpenAI)
 	mux.HandleFunc("GET /api/usage/summary", s.handleUsageSummary)
 	mux.HandleFunc("GET /api/usage/window", s.handleUsageWindow)
+	mux.Handle("GET /ui/", ui.Handler())
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, _ *http.Request) {
 		_, _ = w.Write([]byte(`ok`))
 	})
