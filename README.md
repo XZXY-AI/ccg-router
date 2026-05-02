@@ -29,9 +29,11 @@ If this saves you from switching CLI env vars by hand, starring the repo helps m
 
 ## Quickstart
 
-Install from source with Go:
+Install with Homebrew, the release installer, or Go:
 
 ```bash
+brew install XZXY-AI/tap/ccg-router
+curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
 go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
 ```
 
@@ -43,8 +45,6 @@ ccg-router start
 ```
 
 Open `http://127.0.0.1:17180/ui/`.
-
-Release binaries, the shell installer, and Homebrew formula are prepared for the first tagged release.
 
 ## How it works
 

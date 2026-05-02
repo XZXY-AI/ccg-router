@@ -29,9 +29,11 @@
 
 ## Quickstart
 
-先用 Go 从源码安装：
+用 Homebrew、release installer 或 Go 安装：
 
 ```bash
+brew install XZXY-AI/tap/ccg-router
+curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
 go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
 ```
 
@@ -43,8 +45,6 @@ ccg-router start
 ```
 
 打开 `http://127.0.0.1:17180/ui/`。
-
-Release 二进制、shell installer 和 Homebrew formula 已为第一个正式 tag 准备好。
 
 ## How it works
 

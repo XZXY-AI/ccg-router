@@ -6,9 +6,15 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-02
+
 ### Added
 
-- Initial daemon, routing, ledger, registry, CLI, and local UI work.
+- Expose `ccg-router --version` for release and install verification.
+
+### Changed
+
+- Update README install paths after the first public release.
 
 ## [0.1.0] - TBD
 

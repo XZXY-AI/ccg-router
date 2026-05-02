@@ -16,10 +16,10 @@
 ## Install
 
 ```bash
+brew install XZXY-AI/tap/ccg-router
+curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
 go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
 ```
-
-Release binary、shell installer 和 Homebrew formula 会在正式发布后可用。
 
 ## Known Limits
 
@@ -30,5 +30,6 @@ Release binary、shell installer 和 Homebrew formula 会在正式发布后可�
 ## Verify
 
 ```bash
+ccg-router --help
 ccg-router doctor
 ```

@@ -53,17 +53,18 @@ Tag push 会触发 GitHub Actions release workflow。
 
 1. Release workflow 成功。
 2. GitHub Release 出现四个平台 archive、`checksums.txt` 和 `.sig` 文件。
-3. Homebrew tap 出现 `Formula/ccg-router.rb`。
+3. Homebrew tap 出现 `ccg-router.rb`。
 4. 安装验证：
 
    ```bash
    go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
    curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash
    brew install XZXY-AI/tap/ccg-router
+   ccg-router --help
    ccg-router doctor
    ```
 
-5. README Quickstart 可把 release binary、shell installer、Homebrew 恢复为主要安装方式。
+5. README Quickstart 可展示 Homebrew、shell installer、Go 三条安装路径。
 
 ## 回滚
 
