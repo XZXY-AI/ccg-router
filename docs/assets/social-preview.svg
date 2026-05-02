@@ -18,7 +18,7 @@
     <text x="800" y="383" fill="#ffffff">Local ledger</text>
   </g>
   <text x="112" y="470" fill="#aebbd0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">github.com/XZXY-AI/ccg-router</text>
-  <path d="M1068 180c44 0 80 36 80 80v120c0 44-36 80-80 80h-40" fill="none" stroke="#0f8f6f" stroke-width="18" stroke-linecap="round"/>
-  <path d="M1012 180h-40c-44 0-80 36-80 80v120c0 44 36 80 80 80" fill="none" stroke="#b95d18" stroke-width="18" stroke-linecap="round"/>
-  <path d="M972 320h96" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1008 218h88c28 0 52 24 52 52s-24 52-52 52h-88" fill="none" stroke="#0f8f6f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1008 382h88c28 0 52-24 52-52s-24-52-52-52h-88" fill="none" stroke="#b95d18" stroke-width="18" stroke-linecap="round"/>
+  <path d="M936 300h150" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
 </svg>
