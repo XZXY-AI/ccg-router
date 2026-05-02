@@ -6,6 +6,12 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-02
+
+### Changed
+
+- Let `ccg-router --version` read the module version for `go install ...@version` builds.
+
 ## [0.1.1] - 2026-05-02
 
 ### Added
