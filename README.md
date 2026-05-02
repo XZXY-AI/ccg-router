@@ -9,7 +9,7 @@
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
-![demo](docs/demo.gif)
+![ccg-router local router diagram](docs/demo.png)
 
 `ccg-router` runs on `127.0.0.1`, accepts Anthropic-compatible and OpenAI-compatible requests, routes them to the upstreams you configure, and stores usage metadata in a local SQLite ledger. Your provider keys stay in your local config or environment. It is built for developers who use Claude Code, Codex CLI, OpenAI-compatible APIs, and Anthropic-compatible APIs side by side.
 

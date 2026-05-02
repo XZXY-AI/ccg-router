@@ -9,7 +9,7 @@
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
-![demo](docs/demo.gif)
+![ccg-router local router diagram](docs/demo.png)
 
 `ccg-router` 运行在 `127.0.0.1`，接收 Anthropic-compatible 和 OpenAI-compatible 请求，把它们路由到你配置的 upstream，并把用量元数据写入本地 SQLite ledger。你的 provider key 保留在本地配置或环境变量里。它适合同时使用 Claude Code、Codex CLI、OpenAI-compatible API 和 Anthropic-compatible API 的开发者。
 
