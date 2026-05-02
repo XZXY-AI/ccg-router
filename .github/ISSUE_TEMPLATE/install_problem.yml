@@ -1,0 +1,28 @@
+name: Install problem
+description: Get help with Homebrew, shell installer, or Go install.
+title: "install: "
+labels: ["install"]
+body:
+  - type: dropdown
+    id: method
+    attributes:
+      label: Install method
+      options:
+        - Homebrew
+        - Shell installer
+        - Go install
+        - Release archive
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Command output
+      description: Paste the full command and output.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, shell, and PATH details.

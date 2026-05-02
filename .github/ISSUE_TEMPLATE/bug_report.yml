@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible ccg-router bug.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Minimal steps, config shape, and command output.
+      placeholder: |
+        1. Run ...
+        2. Configure ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `ccg-router --version`.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, install method, Go version if relevant.

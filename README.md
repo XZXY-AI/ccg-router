@@ -3,7 +3,7 @@
 [中文](README.zh-CN.md) · **English**
 
 > One local router for Claude Code and Codex CLI.
-> Share upstreams, switch strategies, and keep a local usage ledger without juggling shell env vars.
+> An OpenAI-compatible and Anthropic-compatible proxy with shared upstreams, routing strategies, and a local SQLite usage ledger.
 
 ![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
@@ -11,7 +11,7 @@
 
 ![demo](docs/demo.gif)
 
-`ccg-router` runs on `127.0.0.1`, accepts Anthropic-compatible and OpenAI-compatible requests, routes them to the upstreams you configure, and stores usage metadata in a local SQLite ledger. Your provider keys stay in your local config or environment.
+`ccg-router` runs on `127.0.0.1`, accepts Anthropic-compatible and OpenAI-compatible requests, routes them to the upstreams you configure, and stores usage metadata in a local SQLite ledger. Your provider keys stay in your local config or environment. It is built for developers who use Claude Code, Codex CLI, OpenAI-compatible APIs, and Anthropic-compatible APIs side by side.
 
 If this saves you from switching CLI env vars by hand, starring the repo helps more AI coding users find it.
 
@@ -26,6 +26,23 @@ If this saves you from switching CLI env vars by hand, starring the repo helps m
 ## Status
 
 `v0.1` is a public preview for non-streaming requests. Streaming passthrough is planned for `v0.2`.
+
+## What Works Today
+
+- Claude Code router endpoint for Anthropic-compatible `/v1/messages`
+- Codex CLI router endpoint for OpenAI-compatible `/v1/chat/completions`
+- Local OpenAI-compatible and Anthropic-compatible proxy on one port
+- Routing strategies: `prefer-cheaper`, `prefer-capable`, and `round-robin`
+- Local SQLite usage ledger for request metadata
+- Signed preset registry loader
+- Read-only local dashboard at `/ui/`
+
+## Not Yet
+
+- Streaming passthrough
+- Hosted preset registry
+- Encrypted local ledger
+- Advanced dashboard analytics
 
 ## Quickstart
 
@@ -59,6 +76,19 @@ Claude Code sends Anthropic-compatible requests to `127.0.0.1:17180`. Codex CLI 
 - Signed preset registry loader
 - Read-only local UI
 
+## Compare
+
+| Need | Best fit |
+|---|---|
+| Route only Claude Code traffic | `claude-code-router` |
+| Share one local routing layer across Claude Code and Codex CLI | `ccg-router` |
+| Manually switch `ANTHROPIC_BASE_URL` and `OPENAI_BASE_URL` | Shell env vars |
+| Keep provider keys local while using multiple compatible APIs | `ccg-router` |
+
+## Search Terms
+
+People usually find this project while looking for a Claude Code router, Codex CLI router, OpenAI-compatible proxy, Anthropic-compatible proxy, local LLM router, AI coding CLI router, or local Claude Code usage tracking.
+
 ## Configuration
 
 See `docs/configuration.md`.
@@ -74,7 +104,7 @@ See `docs/preset-registry.md`.
 ## Roadmap
 
 - v0.1: local daemon, routing, ledger, registry verification, UI
-- v0.2: streaming passthrough, model map dispatch, more CLI adapters
+- v0.2: streaming passthrough, richer local dashboard, more CLI adapters
 - Later: encrypted ledger, plugin hooks, deeper usage analytics
 
 ## FAQ

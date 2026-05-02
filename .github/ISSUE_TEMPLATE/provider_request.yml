@@ -1,0 +1,26 @@
+name: Provider or upstream request
+description: Request compatibility notes for an OpenAI-compatible or Anthropic-compatible upstream.
+title: "provider: "
+labels: ["provider"]
+body:
+  - type: input
+    id: provider
+    attributes:
+      label: Provider or upstream
+      placeholder: example-provider
+    validations:
+      required: true
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Protocol shape
+      options:
+        - OpenAI-compatible
+        - Anthropic-compatible
+        - Both
+        - Not sure
+  - type: textarea
+    id: notes
+    attributes:
+      label: Compatibility notes
+      description: Endpoint path, auth header shape, model names, and any docs link.

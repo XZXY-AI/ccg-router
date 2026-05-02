@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install ccg-router for Claude Code and Codex CLI</title>
+  <meta name="description" content="Install ccg-router with Homebrew, the shell installer, or Go. Configure Claude Code and Codex CLI to use one local router.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/install/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:860px;margin:0 auto;padding:32px 20px;line-height:1.6;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}.box{background:#fff;border:1px solid #d6dde8;border-radius:8px;padding:20px;margin:18px 0}</style>
+</head>
+<body>
+  <p><a href="../">ccg-router</a></p>
+  <h1>Install ccg-router</h1>
+  <p>Use ccg-router as a local Claude Code router, Codex CLI router, OpenAI-compatible proxy, and Anthropic-compatible proxy.</p>
+  <div class="box">
+    <h2>Homebrew</h2>
+    <pre><code>brew install XZXY-AI/tap/ccg-router</code></pre>
+  </div>
+  <div class="box">
+    <h2>Shell installer</h2>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/XZXY-AI/ccg-router/main/scripts/install.sh | bash</code></pre>
+  </div>
+  <div class="box">
+    <h2>Go</h2>
+    <pre><code>go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest</code></pre>
+  </div>
+  <h2>Configure local CLIs</h2>
+  <pre><code>ccg-router init
+export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180
+ccg-router start</code></pre>
+</body>
+</html>

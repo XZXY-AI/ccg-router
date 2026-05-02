@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">ccg-router social preview</title>
+  <desc id="desc">One local router for Claude Code and Codex CLI with OpenAI-compatible and Anthropic-compatible endpoints.</desc>
+  <rect width="1280" height="640" fill="#f7f8fb"/>
+  <rect x="64" y="64" width="1152" height="512" rx="28" fill="#ffffff" stroke="#d6dde8" stroke-width="2"/>
+  <rect x="96" y="96" width="1088" height="448" rx="18" fill="#18212f"/>
+  <circle cx="140" cy="140" r="12" fill="#0f8f6f"/>
+  <circle cx="176" cy="140" r="12" fill="#b95d18"/>
+  <circle cx="212" cy="140" r="12" fill="#2563a9"/>
+  <text x="112" y="218" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800">ccg-router</text>
+  <text x="112" y="290" fill="#dce6f3" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="650">One local router for Claude Code + Codex CLI</text>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="650">
+    <rect x="112" y="348" width="282" height="52" rx="10" fill="#0f8f6f"/>
+    <text x="136" y="383" fill="#ffffff">OpenAI-compatible</text>
+    <rect x="418" y="348" width="334" height="52" rx="10" fill="#b95d18"/>
+    <text x="442" y="383" fill="#ffffff">Anthropic-compatible</text>
+    <rect x="776" y="348" width="210" height="52" rx="10" fill="#2563a9"/>
+    <text x="800" y="383" fill="#ffffff">Local ledger</text>
+  </g>
+  <text x="112" y="470" fill="#aebbd0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26">github.com/XZXY-AI/ccg-router</text>
+  <path d="M1068 180c44 0 80 36 80 80v120c0 44-36 80-80 80h-40" fill="none" stroke="#0f8f6f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1012 180h-40c-44 0-80 36-80 80v120c0 44 36 80 80 80" fill="none" stroke="#b95d18" stroke-width="18" stroke-linecap="round"/>
+  <path d="M972 320h96" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+</svg>

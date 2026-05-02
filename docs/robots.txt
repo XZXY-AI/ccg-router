@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xzxy-ai.github.io/ccg-router/sitemap.xml

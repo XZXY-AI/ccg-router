@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex CLI Router with OpenAI-Compatible Local Proxy</title>
+  <meta name="description" content="Use ccg-router as a local Codex CLI router for OpenAI-compatible /v1/chat/completions traffic, shared routing, and local usage tracking.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/codex-cli-router/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:860px;margin:0 auto;padding:32px 20px;line-height:1.6;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}.box{background:#fff;border:1px solid #d6dde8;border-radius:8px;padding:20px;margin:18px 0}</style>
+</head>
+<body>
+  <p><a href="../">ccg-router</a></p>
+  <h1>Codex CLI router</h1>
+  <p>ccg-router exposes an OpenAI-compatible local endpoint for Codex CLI. It lets you route Codex CLI traffic through upstreams you configure while keeping provider keys local.</p>
+  <div class="box">
+    <h2>Set Codex CLI endpoint</h2>
+    <pre><code>export OPENAI_BASE_URL=http://127.0.0.1:17180
+ccg-router start</code></pre>
+  </div>
+  <h2>Use cases</h2>
+  <ul>
+    <li>Route Codex CLI to an OpenAI-compatible API.</li>
+    <li>Track Codex CLI request metadata locally.</li>
+    <li>Share one routing config with Claude Code.</li>
+  </ul>
+</body>
+</html>
