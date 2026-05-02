@@ -62,7 +62,7 @@ func (s *Server) handleAnthropic(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "streaming not supported in ccg-router v0.1; set stream=false or wait for v0.2", http.StatusNotImplemented)
 		return
 	}
-	s.proxy(w, r, nr, "/v1/messages")
+	s.proxy(w, r, nr, "/v1/messages", "anthropic")
 }
 
 func (s *Server) handleOpenAI(w http.ResponseWriter, r *http.Request) {
@@ -75,14 +75,14 @@ func (s *Server) handleOpenAI(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "streaming not supported in ccg-router v0.1; set stream=false or wait for v0.2", http.StatusNotImplemented)
 		return
 	}
-	s.proxy(w, r, nr, "/v1/chat/completions")
+	s.proxy(w, r, nr, "/v1/chat/completions", "openai")
 }
 
 func (s *Server) proxy(
 	w http.ResponseWriter, r *http.Request,
-	nr normal.NormalRequest, path string,
+	nr normal.NormalRequest, path string, protocol string,
 ) {
-	pool := s.deps.Pool.Enabled()
+	pool := filterProtocol(s.deps.Pool.Enabled(), protocol)
 	pick, _, err := s.deps.Engine.Pick(r.Context(), nr, pool, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusServiceUnavailable)
@@ -108,6 +108,16 @@ func (s *Server) proxy(
 	}
 	w.WriteHeader(status)
 	_, _ = w.Write(body)
+}
+
+func filterProtocol(pool []upstream.Upstream, protocol string) []upstream.Upstream {
+	out := make([]upstream.Upstream, 0, len(pool))
+	for _, u := range pool {
+		if u.Protocol == protocol {
+			out = append(out, u)
+		}
+	}
+	return out
 }
 
 func (s *Server) handleUsageSummary(w http.ResponseWriter, r *http.Request) {
