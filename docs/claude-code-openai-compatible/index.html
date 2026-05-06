@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Route Claude Code to OpenAI-Compatible APIs Locally</title>
+  <meta name="description" content="Use ccg-router to route Claude Code and Codex CLI through one local OpenAI-compatible and Anthropic-compatible router with a local SQLite usage ledger.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/claude-code-openai-compatible/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:900px;margin:0 auto;padding:32px 20px;line-height:1.6;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}.box{background:#fff;border:1px solid #d6dde8;border-radius:8px;padding:20px;margin:18px 0}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../">ccg-router</a></p>
+  <h1>Route Claude Code to OpenAI-compatible APIs locally</h1>
+  <p>ccg-router is a local-first router for developers who use Claude Code alongside OpenAI-compatible APIs and Codex CLI. It exposes Anthropic-compatible and OpenAI-compatible endpoints on one local daemon.</p>
+  <div class="box">
+    <h2>Local endpoint setup</h2>
+    <pre><code>ccg-router init
+export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180
+ccg-router start</code></pre>
+  </div>
+  <h2>Why this page exists</h2>
+  <p>Many users search for ways to connect Claude Code, OpenAI-compatible APIs, Anthropic-compatible APIs, and local usage tracking. ccg-router does not host keys or a control plane; it gives those tools one local routing layer.</p>
+  <ul>
+    <li>Claude Code router for Anthropic-compatible traffic.</li>
+    <li>OpenAI-compatible proxy for Codex CLI traffic.</li>
+    <li>Local SQLite usage ledger without prompt or key storage.</li>
+  </ul>
+  <p><a href="https://github.com/XZXY-AI/ccg-router">Star ccg-router on GitHub</a></p>
+</body>
+</html>

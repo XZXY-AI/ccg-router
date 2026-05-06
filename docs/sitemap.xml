@@ -5,4 +5,11 @@
   <url><loc>https://xzxy-ai.github.io/ccg-router/claude-code-router/</loc></url>
   <url><loc>https://xzxy-ai.github.io/ccg-router/codex-cli-router/</loc></url>
   <url><loc>https://xzxy-ai.github.io/ccg-router/openai-anthropic-router/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/claude-code-openai-compatible/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/codex-cli-openai-compatible/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/anthropic-base-url/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/openai-base-url/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/claude-code-usage-tracking/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/local-llm-router/</loc></url>
+  <url><loc>https://xzxy-ai.github.io/ccg-router/compare/claude-code-router/</loc></url>
 </urlset>

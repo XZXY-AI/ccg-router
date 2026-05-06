@@ -89,6 +89,26 @@ Claude Code sends Anthropic-compatible requests to `127.0.0.1:17180`. Codex CLI 
 
 People usually find this project while looking for a Claude Code router, Codex CLI router, OpenAI-compatible proxy, Anthropic-compatible proxy, local LLM router, AI coding CLI router, or local Claude Code usage tracking.
 
+## Guides
+
+- [Claude Code router](docs/guides/claude-code-router.md)
+- [Codex CLI router](docs/guides/codex-cli-router.md)
+- [OpenAI-compatible proxy](docs/guides/openai-compatible-proxy.md)
+- [Anthropic-compatible proxy](docs/guides/anthropic-compatible-proxy.md)
+- [Local usage ledger](docs/guides/local-usage-ledger.md)
+- [ccg-router vs claude-code-router](docs/guides/compare-claude-code-router.md)
+
+## SEO Landing Pages
+
+- [Claude Code router](https://xzxy-ai.github.io/ccg-router/claude-code-router/)
+- [Codex CLI router](https://xzxy-ai.github.io/ccg-router/codex-cli-router/)
+- [Route Claude Code to OpenAI-compatible APIs](https://xzxy-ai.github.io/ccg-router/claude-code-openai-compatible/)
+- [Codex CLI OpenAI-compatible router](https://xzxy-ai.github.io/ccg-router/codex-cli-openai-compatible/)
+- [ANTHROPIC_BASE_URL local router](https://xzxy-ai.github.io/ccg-router/anthropic-base-url/)
+- [OPENAI_BASE_URL local router](https://xzxy-ai.github.io/ccg-router/openai-base-url/)
+- [Claude Code usage tracking](https://xzxy-ai.github.io/ccg-router/claude-code-usage-tracking/)
+- [Local LLM router for AI coding CLI tools](https://xzxy-ai.github.io/ccg-router/local-llm-router/)
+
 ## Configuration
 
 See `docs/configuration.md`.
