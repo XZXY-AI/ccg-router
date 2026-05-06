@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OPENAI_BASE_URL Not Working with Codex CLI</title>
+  <meta name="description" content="Fix OPENAI_BASE_URL not working with Codex CLI and ccg-router. Check local daemon, OpenAI-compatible upstreams, auth headers, and non-streaming support.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/errors/openai-base-url-not-working/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Errors</a></p>
+  <h1>OPENAI_BASE_URL not working with Codex CLI</h1>
+  <p>If Codex CLI is not reaching ccg-router, verify that the local daemon is running and that <code>OPENAI_BASE_URL</code> points to the local router.</p>
+  <pre><code>export OPENAI_BASE_URL=http://127.0.0.1:17180
+ccg-router start</code></pre>
+  <h2>Checklist</h2>
+  <ul>
+    <li>Run <code>ccg-router doctor</code>.</li>
+    <li>Confirm your upstream has <code>protocol = "openai"</code>.</li>
+    <li>Confirm the auth header uses <code>Authorization: Bearer ${OPENAI_API_KEY}</code> or your provider's required shape.</li>
+    <li>Use non-streaming requests with v0.1.</li>
+    <li>Check that your shell exports <code>OPENAI_BASE_URL</code> in the same session that launches Codex CLI.</li>
+  </ul>
+</body>
+</html>

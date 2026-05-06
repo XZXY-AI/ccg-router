@@ -109,6 +109,20 @@ People usually find this project while looking for a Claude Code router, Codex C
 - [Claude Code usage tracking](https://xzxy-ai.github.io/ccg-router/claude-code-usage-tracking/)
 - [Local LLM router for AI coding CLI tools](https://xzxy-ai.github.io/ccg-router/local-llm-router/)
 
+## Tutorials
+
+- [Use one local router for Claude Code and Codex CLI](https://xzxy-ai.github.io/ccg-router/tutorials/one-local-router/)
+- [Run an OpenAI-compatible and Anthropic-compatible local proxy](https://xzxy-ai.github.io/ccg-router/tutorials/openai-anthropic-compatible-proxy/)
+- [Track Claude Code and Codex CLI usage locally](https://xzxy-ai.github.io/ccg-router/tutorials/local-usage-ledger/)
+
+## Troubleshooting
+
+- [ANTHROPIC_BASE_URL not working with Claude Code](docs/errors/anthropic-base-url-not-working.md)
+- [OPENAI_BASE_URL not working with Codex CLI](docs/errors/openai-base-url-not-working.md)
+- [Homebrew install problem](docs/errors/homebrew-install.md)
+- [go install ccg-router@latest problem](docs/errors/go-install-latest.md)
+- [ccg-router doctor failed](docs/errors/doctor-failed.md)
+
 ## Configuration
 
 See `docs/configuration.md`.

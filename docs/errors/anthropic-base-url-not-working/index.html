@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ANTHROPIC_BASE_URL Not Working with Claude Code</title>
+  <meta name="description" content="Fix ANTHROPIC_BASE_URL not working with Claude Code and ccg-router. Check local daemon, config, auth headers, and non-streaming support.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/errors/anthropic-base-url-not-working/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Errors</a></p>
+  <h1>ANTHROPIC_BASE_URL not working with Claude Code</h1>
+  <p>If Claude Code is not reaching ccg-router, first verify that the local daemon is running and that <code>ANTHROPIC_BASE_URL</code> points to the local router.</p>
+  <pre><code>export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+ccg-router start</code></pre>
+  <h2>Checklist</h2>
+  <ul>
+    <li>Run <code>ccg-router doctor</code> and fix config or ledger errors.</li>
+    <li>Confirm your upstream has <code>protocol = "anthropic"</code>.</li>
+    <li>Confirm the upstream auth header references an environment variable that exists.</li>
+    <li>Use non-streaming requests with v0.1. Streaming passthrough is planned for v0.2.</li>
+    <li>Make sure no shell profile overrides <code>ANTHROPIC_BASE_URL</code> after you set it.</li>
+  </ul>
+  <p>Open an install issue on GitHub if the command output is unclear.</p>
+</body>
+</html>

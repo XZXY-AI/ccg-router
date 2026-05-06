@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenAI-Compatible and Anthropic-Compatible Local Proxy Tutorial</title>
+  <meta name="description" content="Learn how ccg-router works as one local OpenAI-compatible and Anthropic-compatible proxy for Claude Code, Codex CLI, and AI coding tools.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/tutorials/openai-anthropic-compatible-proxy/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Tutorials</a></p>
+  <h1>Run an OpenAI-compatible and Anthropic-compatible local proxy</h1>
+  <p>AI coding tools do not all speak the same API shape. Claude Code commonly uses an Anthropic-compatible endpoint, while Codex CLI commonly uses an OpenAI-compatible endpoint. ccg-router accepts both shapes on one local daemon.</p>
+  <h2>Protocol paths</h2>
+  <ul>
+    <li>Anthropic-compatible: <code>/v1/messages</code></li>
+    <li>OpenAI-compatible: <code>/v1/chat/completions</code></li>
+  </ul>
+  <h2>Local endpoint</h2>
+  <pre><code>export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180</code></pre>
+  <p>Both environment variables point to the same local router. The router uses request path and configured upstream protocol to keep the wire format consistent.</p>
+  <h2>Routing strategy</h2>
+  <p>The config supports <code>prefer-cheaper</code>, <code>prefer-capable</code>, and <code>round-robin</code>. For early local testing, <code>prefer-cheaper</code> is a simple default. For comparing multiple compatible providers, <code>round-robin</code> is useful.</p>
+  <h2>Privacy model</h2>
+  <p>ccg-router does not provide a hosted control plane. Provider keys stay in your local config or environment variables. The usage ledger stores request metadata, not API keys and not prompts.</p>
+  <h2>Best fit</h2>
+  <p>Use ccg-router when you want one local LLM router for AI coding CLI workflows and you need both OpenAI-compatible and Anthropic-compatible endpoints.</p>
+</body>
+</html>

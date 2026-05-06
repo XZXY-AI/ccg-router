@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fix go install ccg-router@latest Problems</title>
+  <meta name="description" content="Troubleshoot go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest problems, Go toolchain version, PATH, and module proxy delay.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/errors/go-install-latest/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Errors</a></p>
+  <h1>go install ccg-router@latest problem</h1>
+  <pre><code>go install github.com/XZXY-AI/ccg-router/cmd/ccg-router@latest
+ccg-router --version</code></pre>
+  <h2>Checklist</h2>
+  <ul>
+    <li>ccg-router requires a recent Go toolchain. The module can switch toolchains automatically when needed.</li>
+    <li>Check <code>$(go env GOPATH)/bin</code> is in your PATH.</li>
+    <li>If <code>@latest</code> is delayed by the Go module proxy, install a specific version such as <code>@v0.1.2</code>.</li>
+    <li>Use Homebrew or the shell installer if you do not want to manage Go binaries directly.</li>
+  </ul>
+</body>
+</html>

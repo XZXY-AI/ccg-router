@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Use One Local Router for Claude Code and Codex CLI</title>
+  <meta name="description" content="Step-by-step tutorial for using ccg-router as one local router for Claude Code and Codex CLI with ANTHROPIC_BASE_URL and OPENAI_BASE_URL.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/tutorials/one-local-router/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}.note{background:#fff;border:1px solid #d6dde8;border-radius:8px;padding:18px;margin:18px 0}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Tutorials</a></p>
+  <h1>Use one local router for Claude Code and Codex CLI</h1>
+  <p>Claude Code and Codex CLI can both work with compatible API endpoints, but switching endpoint environment variables by hand is easy to get wrong. ccg-router gives both tools one local routing layer on <code>127.0.0.1:17180</code>.</p>
+  <p>This tutorial shows the basic local-first setup. It is useful when you want a Claude Code router, a Codex CLI router, OpenAI-compatible routing, Anthropic-compatible routing, and a local usage ledger in one daemon.</p>
+  <h2>Install</h2>
+  <pre><code>brew install XZXY-AI/tap/ccg-router</code></pre>
+  <p>You can also use the shell installer or Go install from the GitHub repository.</p>
+  <h2>Initialize config</h2>
+  <pre><code>ccg-router init</code></pre>
+  <p>The generated config uses official-direct upstream examples. Replace or extend those upstreams with the providers and compatible APIs you actually use. Keep provider keys in environment variables.</p>
+  <h2>Point both CLIs at the local daemon</h2>
+  <pre><code>export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180</code></pre>
+  <p>Claude Code sends Anthropic-compatible traffic to the local router. Codex CLI sends OpenAI-compatible traffic to the same router. ccg-router selects an enabled upstream, forwards the request, and records request metadata in SQLite.</p>
+  <h2>Start the router</h2>
+  <pre><code>ccg-router start</code></pre>
+  <div class="note">
+    <strong>Current limit:</strong> v0.1 supports non-streaming requests. Streaming passthrough is planned for v0.2.
+  </div>
+  <h2>Verify</h2>
+  <pre><code>ccg-router --version
+ccg-router doctor</code></pre>
+  <p>Use <code>doctor</code> to check config, ledger, and registry health. The local UI is available at <code>http://127.0.0.1:17180/ui/</code>.</p>
+  <h2>Why this helps</h2>
+  <ul>
+    <li>One place to configure upstreams for AI coding CLIs.</li>
+    <li>One local OpenAI-compatible and Anthropic-compatible proxy.</li>
+    <li>Provider keys remain local.</li>
+    <li>Request metadata is visible through a local SQLite usage ledger.</li>
+  </ul>
+</body>
+</html>

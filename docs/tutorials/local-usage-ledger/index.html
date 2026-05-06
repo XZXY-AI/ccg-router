@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Usage Ledger for Claude Code and Codex CLI</title>
+  <meta name="description" content="Use ccg-router's local SQLite usage ledger to track Claude Code and Codex CLI request metadata without storing prompts or API keys.">
+  <link rel="canonical" href="https://xzxy-ai.github.io/ccg-router/tutorials/local-usage-ledger/">
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:0 auto;padding:32px 20px;line-height:1.65;color:#18212f;background:#f7f8fb}a{color:#2563a9}pre{background:#111827;color:#e5e7eb;padding:16px;border-radius:8px;overflow:auto}li{margin:8px 0}</style>
+</head>
+<body>
+  <p><a href="../../">ccg-router</a> / <a href="../">Tutorials</a></p>
+  <h1>Track Claude Code and Codex CLI usage locally</h1>
+  <p>When AI coding tools share one local router, you can record useful request metadata without adding a hosted analytics service. ccg-router writes usage records to a local SQLite ledger.</p>
+  <h2>What the ledger is for</h2>
+  <ul>
+    <li>Seeing which upstream handled a request.</li>
+    <li>Checking recent request activity.</li>
+    <li>Understanding local usage across Claude Code and Codex CLI.</li>
+    <li>Debugging routing behavior without sending metadata to a hosted control plane.</li>
+  </ul>
+  <h2>What the ledger does not store</h2>
+  <p>The ledger does not store provider API keys and does not store prompts. Keep provider keys in local environment variables or local config.</p>
+  <h2>Health check</h2>
+  <pre><code>ccg-router doctor</code></pre>
+  <p>The doctor command checks config, ledger, and registry health. The read-only UI is available at <code>http://127.0.0.1:17180/ui/</code>.</p>
+  <h2>Search fit</h2>
+  <p>This page is for users looking for Claude Code usage tracking, Codex CLI usage tracking, local AI coding usage ledger, or local LLM router observability.</p>
+</body>
+</html>
