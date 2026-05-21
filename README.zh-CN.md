@@ -1,27 +1,53 @@
 # ccg-router
 
-[English](README.md) · **中文**
+**中文** · [English](README.md)
 
-> Claude Code 和 Codex CLI 的统一本地路由器。
-> 一个本地 OpenAI-compatible 和 Anthropic-compatible proxy，支持共享 upstream、路由策略和本地 SQLite 用量 ledger。
+> 一个本地守护进程。Claude Code 和 Codex CLI 都接它。
+> 同一个端口，同时讲 Anthropic 协议 **和** OpenAI 协议 —— 顺带一个记录每一次请求的本地 SQLite ledger。
 
 ![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
-![ccg-router local router diagram](docs/demo.png)
+![ccg-router 用一个本地端口同时服务 Claude Code 和 Codex CLI](docs/demo.png)
 
-`ccg-router` 运行在 `127.0.0.1`，接收 Anthropic-compatible 和 OpenAI-compatible 请求，把它们路由到你配置的 upstream，并把用量元数据写入本地 SQLite ledger。你的 provider key 保留在本地配置或环境变量里。它适合同时使用 Claude Code、Codex CLI、OpenAI-compatible API 和 Anthropic-compatible API 的开发者。
+## 30 秒就能跑起来
 
-如果它能帮你少切几次 CLI 环境变量，给 repo 一个 star 可以帮助更多 AI coding 用户发现它。
+```bash
+# 1. 安装
+brew install XZXY-AI/tap/ccg-router
 
-## Why ccg-router?
+# 2. init + 把两个 CLI 都指向本地 router
+ccg-router init
+export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180
 
-| 工具 | 做什么 | 差异 |
+# 3. 启动
+ccg-router start
+```
+
+之后 Claude Code 和 Codex CLI 都经一个守护进程走。Provider key 留在 `~/.config/ccg-router/config.toml`。每一次请求写一行到本地 SQLite ledger，你可以直接用 `sqlite3` 查。
+
+## 和 claude-code-router 有什么不同？
+
+| | `claude-code-router` | **`ccg-router`** |
 |---|---|---|
-| `claude-code-router` | 路由 Claude Code 流量 | 只聚焦单个 CLI |
-| 手动切换 | 手动改 shell 环境变量 | 慢、不一致、没有 ledger |
-| `ccg-router` | Claude Code 和 Codex CLI 的本地路由层 | 一套配置、共享路由、本地用量 ledger |
+| Claude Code 路由 | ✓ | ✓ |
+| Codex CLI 路由 | — | ✓ |
+| 一个守护进程同时服务两个 CLI | — | ✓ |
+| 本地 SQLite 用量 ledger | — | ✓ |
+| 多种路由策略 | — | `prefer-cheaper` / `prefer-capable` / `round-robin` |
+| 托管控制面 | — | — （也没有） |
+
+如果你只用 Claude Code，[`claude-code-router`](https://github.com/musistudio/claude-code-router) 在单 CLI 场景下更成熟。`ccg-router` 是为双 CLI 工作流而存在的。
+
+## 为什么今天就值得试
+
+- 你在 Claude Code 和 Codex CLI 之间切换，手动改环境变量已经烦了。
+- 你想要一个本地 per-request ledger，不用托管 dashboard 就能回答"这个副业项目实际花了多少钱"。
+- 你想用一套配置切换路由策略，而不是去改 shell rc。
+
+如果以上都不沾边，那暂时不需要 —— star 一下，等 `v0.2` 加上 streaming 再来。
 
 ## Status
 
