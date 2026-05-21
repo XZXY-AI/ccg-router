@@ -3,7 +3,7 @@
 **Sub rules check:**
 - r/LocalLLaMA is technical-leaning and skeptical of hosted tools. Lead with the local-only architecture, not the use-case.
 - Mention Go, single static binary, no hosted control plane, in the first paragraph.
-- Avoid marketing hyperbole and superlatives. Keep language technical and factual.
+- Avoid words like "powerful", "seamless", "next-generation". Engineers downvote those on sight.
 
 ---
 

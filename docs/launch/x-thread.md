@@ -45,11 +45,11 @@ No hosted control plane. Keys stay in ~/.config/ccg-router/config.toml.
 ## Tweet 4 (honest about scope)
 
 ```
-v0.1 is non-streaming. Streaming passthrough is v0.2.
+v0.1 is the non-streaming public preview. Streaming passthrough is the next major version.
 
-Three routing strategies: prefer-cheaper, prefer-capable, round-robin.
+Three routing strategies today: prefer-cheaper, prefer-capable, round-robin.
 
-If you only use one CLI, you don't need this. claude-code-router is more mature for single-CLI.
+If you only use one of Claude Code or Codex CLI, you do not need this. claude-code-router is more mature for the single-CLI case.
 ```
 
 ## Tweet 5 (install)
