@@ -2,26 +2,52 @@
 
 [中文](README.zh-CN.md) · **English**
 
-> One local router for Claude Code and Codex CLI.
-> An OpenAI-compatible and Anthropic-compatible proxy with shared upstreams, routing strategies, and a local SQLite usage ledger.
+> One local daemon. Both Claude Code and Codex CLI talk to it.
+> Anthropic-compatible **and** OpenAI-compatible on the same port — plus a local SQLite ledger for every request.
 
 ![CI](https://github.com/XZXY-AI/ccg-router/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 ![GitHub stars](https://img.shields.io/github/stars/XZXY-AI/ccg-router?style=social)
 
-![ccg-router local router diagram](docs/demo.png)
+![ccg-router serves Claude Code and Codex CLI from one local port](docs/demo.png)
 
-`ccg-router` runs on `127.0.0.1`, accepts Anthropic-compatible and OpenAI-compatible requests, routes them to the upstreams you configure, and stores usage metadata in a local SQLite ledger. Your provider keys stay in your local config or environment. It is built for developers who use Claude Code, Codex CLI, OpenAI-compatible APIs, and Anthropic-compatible APIs side by side.
+## What it does in 30 seconds
 
-If this saves you from switching CLI env vars by hand, starring the repo helps more AI coding users find it.
+```bash
+# 1. Install
+brew install XZXY-AI/tap/ccg-router
 
-## Why ccg-router?
+# 2. Init + point both CLIs at the local router
+ccg-router init
+export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
+export OPENAI_BASE_URL=http://127.0.0.1:17180
 
-| Tool | What it does | Difference |
+# 3. Start it
+ccg-router start
+```
+
+Now Claude Code and Codex CLI both flow through one daemon. Your provider keys stay in `~/.config/ccg-router/config.toml`. Every request is logged to a local SQLite ledger you can query with `sqlite3`.
+
+## How is this different from claude-code-router?
+
+| | `claude-code-router` | **`ccg-router`** |
 |---|---|---|
-| `claude-code-router` | Routes Claude Code traffic | Single CLI focus |
-| Manual switching | Change shell env vars by hand | Slow, inconsistent, no ledger |
-| `ccg-router` | Local routing layer for Claude Code and Codex CLI | One config, shared routing, local usage ledger |
+| Claude Code routing | ✓ | ✓ |
+| Codex CLI routing | — | ✓ |
+| One daemon for both CLIs | — | ✓ |
+| Local SQLite usage ledger | — | ✓ |
+| Multiple routing strategies | — | `prefer-cheaper` / `prefer-capable` / `round-robin` |
+| Hosted control plane | — | — (also no) |
+
+If you only use Claude Code, [`claude-code-router`](https://github.com/musistudio/claude-code-router) is more mature for the single-CLI case. `ccg-router` exists for the dual-CLI workflow.
+
+## Why try it today
+
+- You bounce between Claude Code and Codex CLI and the env-var dance is annoying.
+- You want a per-request local ledger so you can answer "how much did this side project actually cost me?" without a hosted dashboard.
+- You want one config to switch routing strategy per workload, instead of editing your shell rc.
+
+If none of those apply, you probably don't need this yet — star the repo and check back in a few weeks when `v0.2` lands streaming.
 
 ## Status
 
