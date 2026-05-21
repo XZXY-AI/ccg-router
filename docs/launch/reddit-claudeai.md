@@ -19,7 +19,7 @@ I kept editing ANTHROPIC_BASE_URL by hand every time I switched between Claude C
 ## Body
 
 ```
-For the past month I've been bouncing between Claude Code and Codex CLI on the same machine, and the friction was the env vars. Every time I wanted Claude Code to talk to a different upstream, I had to remember which shell had which `ANTHROPIC_BASE_URL` set, which terminal had Codex CLI's `OPENAI_BASE_URL`, and whether I'd accidentally clobbered them with a `source ~/.zshrc`.
+For the past few weeks I've been bouncing between Claude Code and Codex CLI on the same machine, and the friction was the env vars. Every time I wanted Claude Code to talk to a different upstream, I had to remember which shell had which `ANTHROPIC_BASE_URL` set, which terminal had Codex CLI's `OPENAI_BASE_URL`, and whether I'd accidentally clobbered them with a `source ~/.zshrc`.
 
 So I wrote ccg-router. It's a Go daemon you run on 127.0.0.1 that:
 

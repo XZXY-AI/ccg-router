@@ -32,7 +32,7 @@ What it does not do:
 - Encrypted ledger at rest (v0.4).
 - Run a model. This is purely a routing/proxy/ledger layer.
 
-Why I'm posting here specifically: the API CLIs are useful but the "two CLIs, two sets of env vars, no shared usage view" setup is annoying enough that I want to see if anyone else is solving it differently. If you've got a smaller hack that does the same thing, I want to read it.
+Why I'm posting here specifically: the API CLIs are useful but the "two CLIs, two sets of env vars, no shared usage view" setup is annoying enough that I want to see if anyone else is solving it differently. If you've got a smaller hack that does the same thing, I want to read it. If you only use one of those CLIs you don't need ccg-router — claude-code-router is more mature for the single-CLI case.
 
 Repo: https://github.com/XZXY-AI/ccg-router
 Apache-2.0, Go single binary, brew/curl/go install.

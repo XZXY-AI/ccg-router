@@ -64,4 +64,4 @@ Probably no for: hosted-service integrations, telemetry, anything that requires 
 
 ## "Is this a fork of X?"
 
-No. Independent implementation in Go. Inspirations are credited in `docs/credits.md` (TODO if this question actually comes up — do not preemptively write it).
+No. Independent implementation in Go.
