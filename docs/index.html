@@ -60,6 +60,13 @@
     .tag { display: inline-block; margin: 0 8px 8px 0; padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--muted); font-size: 13px; }
     .accent { color: var(--orange); font-weight: 800; }
     section { padding: 28px 0; }
+    .vs table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .vs th, .vs td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+    .vs thead th { background: #eef2f7; font-size: 14px; }
+    .vs tbody tr:last-child td { border-bottom: 0; }
+    .vs td:first-child { color: var(--muted); }
+    .vs .ours { font-weight: 700; color: var(--ink); }
+    .vs .note { color: var(--muted); font-size: 14px; margin-top: 12px; }
     footer { padding: 40px 0; color: var(--muted); font-size: 14px; }
     @media (max-width: 820px) {
       header, .hero, .two { grid-template-columns: 1fr; display: grid; }
@@ -98,22 +105,40 @@
     <main>
       <section class="hero">
         <div>
-          <h1>One local router for Claude Code and Codex CLI.</h1>
-          <p class="lead">Run an OpenAI-compatible and Anthropic-compatible local proxy on one port, share upstreams, switch routing strategies, and keep a local SQLite usage ledger.</p>
+          <h1>One local daemon. Both Claude Code and Codex CLI talk to it.</h1>
+          <p class="lead">Anthropic-compatible <strong>and</strong> OpenAI-compatible on the same port &mdash; plus a local SQLite ledger for every request. Provider keys stay on your machine.</p>
           <div class="actions">
             <a class="button primary" href="https://github.com/XZXY-AI/ccg-router">Star on GitHub</a>
-            <a class="button" href="./install/">Install</a>
+            <a class="button" href="#install">Install in 30s</a>
           </div>
         </div>
-        <img class="hero-art" src="demo.png" alt="ccg-router routes Claude Code and Codex CLI traffic through one local router to OpenAI-compatible and Anthropic-compatible upstreams with a local SQLite ledger.">
+        <img class="hero-art" src="demo.png" alt="ccg-router serves Claude Code and Codex CLI from one local port, with a local SQLite usage ledger.">
       </section>
 
-      <section>
+      <section id="install">
         <pre><code>brew install XZXY-AI/tap/ccg-router
 ccg-router init
 export ANTHROPIC_BASE_URL=http://127.0.0.1:17180
 export OPENAI_BASE_URL=http://127.0.0.1:17180
 ccg-router start</code></pre>
+      </section>
+
+      <section class="vs">
+        <h2>How is this different from claude-code-router?</h2>
+        <table>
+          <thead>
+            <tr><th></th><th>claude-code-router</th><th class="ours">ccg-router</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Claude Code routing</td><td>&#10003;</td><td class="ours">&#10003;</td></tr>
+            <tr><td>Codex CLI routing</td><td>&mdash;</td><td class="ours">&#10003;</td></tr>
+            <tr><td>One daemon for both CLIs</td><td>&mdash;</td><td class="ours">&#10003;</td></tr>
+            <tr><td>Local SQLite usage ledger</td><td>&mdash;</td><td class="ours">&#10003;</td></tr>
+            <tr><td>Multiple routing strategies</td><td>&mdash;</td><td class="ours"><code>prefer-cheaper</code> &middot; <code>prefer-capable</code> &middot; <code>round-robin</code></td></tr>
+            <tr><td>Hosted control plane</td><td>&mdash;</td><td class="ours">&mdash; (also no)</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Only use Claude Code? <a href="https://github.com/musistudio/claude-code-router">claude-code-router</a> is more mature for that case. <code>ccg-router</code> exists for the dual-CLI workflow.</p>
       </section>
 
       <section class="grid">
